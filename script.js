@@ -1,51 +1,4 @@
-class snake
-{
-    location = {x:0, y:0}
-    length   = 10;
-    map      = {
-        width : null,
-        height: null
-    }
-
-    constructor(mapWidth, mapHeight){
-        this.map.width  = mapWidth - 1;
-        this.map.height = mapHeight - 1;
-    }
-
-
-    verticalIncrease(value){
-        if(value > 0){
-            if(this.location.y >= this.map.height){
-                this.location.y = 0;
-                return;
-            }
-        } else{
-            if(this.location.y <= 0){
-                this.location.y = this.map.height;
-                return;
-            }
-        }
-
-        this.location.y += value;
-    }
-    horizontalIncrease(value){
-
-        if(value > 0){
-            if(this.location.x >= this.map.width){
-                this.location.x = 0;
-                return;
-            }
-        } else{
-            if(this.location.x <= 0){
-                this.location.x = this.map.width;
-                return;
-            }
-        }
-
-        this.location.x += value;
-    }
-
-}
+import Snake from './modules/Snake.js';
 
 
 
@@ -55,12 +8,12 @@ const HTML = {};
 HTML.btn = {};
 HTML.btn.start = document.getElementById('start-button');
 HTML.btn.stop = document.getElementById('stop-button');
-
-HTML.speed = document.querySelector('.board .speed .value');
-
-HTML.location = {};
-HTML.location.x = document.querySelector('.location .x');
-HTML.location.y = document.querySelector('.location .y');
+//BOARD
+HTML.board = {};
+HTML.board.location = {};
+HTML.board.speed = document.querySelector('.board .speed .value');
+HTML.board.location.x = document.querySelector('.location .x');
+HTML.board.location.y = document.querySelector('.location .y');
 //HTML//
 
 
@@ -78,9 +31,9 @@ let   speed          = 100;
 
 
 //CREATE SNAKE INSTANCE
-const snake1 = new snake(map.width, map.height);
+const snake1 = new Snake(map.width, map.height);
 
-HTML.speed.innerHTML = speed;
+HTML.board.speed.innerHTML = speed.toString();
 
 //START:
 HTML.btn.start.addEventListener('click', e => {
@@ -110,8 +63,8 @@ HTML.btn.start.addEventListener('click', e => {
 
 
         //BOARD
-        HTML.location.x.innerHTML = snake1.location.x;
-        HTML.location.y.innerHTML = snake1.location.y;
+        HTML.board.location.x.innerHTML = snake1.location.x;
+        HTML.board.location.y.innerHTML = snake1.location.y;
 
         //MOVE
         if(direction === 'x'){
@@ -159,9 +112,8 @@ HTML.btn.stop.addEventListener('click', e => {
 
 
 
-
+//KEY DOWN:
 document.onkeydown = function (event){
-
 
     switch(event.key){
         case "ArrowUp":
@@ -189,6 +141,5 @@ document.onkeydown = function (event){
             break;
     }
 
-    console.log({direction, increase});
-
 }
+//KEY DOWN//

@@ -10,6 +10,7 @@
 </head>
 <body>
 <?php require 'view.php' ?>
-<script src="script.js"></script>
+<script type="module" src="script.js"></script>
+
 </body>
 </html>

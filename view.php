@@ -16,8 +16,8 @@ for($y=0; $y<30; $y++){
         <div class="speed" style="float: left; margin-top: 6px; margin-left: 20px;">Hız: <span class="value"></span></div>
         <div class="location" style="float: left; margin-top: 6px; margin-left: 20px;">
             Konum:
-            <span class="x"></span>,
-            <span class="y"></span>
+            x<span class="x"></span>,
+            y<span class="y"></span>
         </div>
         <div style="clear: both;"></div>
     </div>
