@@ -41,37 +41,32 @@ HTML.btn.start.addEventListener('click', e => {
     //MOVE UPDATE:
     moveInterval = setInterval(()=>{
 
-        locationMemory.push({x:snake1.location.x, y:snake1.location.y});
+        //locationMemory.push({x:snake1.currentLocation.x, y:snake1.currentLocation.y});
 
         //BEYAZLAT
-        if(locationMemory.length > snake1.length){
+        /*if(locationMemory.length > snake1.length){
             let clearLocation = locationMemory.shift();
             let $clearPoint = document.getElementById(`x${clearLocation.x}y${clearLocation.y}`);
             $clearPoint.style.backgroundColor = 'white';
-        }
+        }*/
 
         //BİR SONRAKİ NOKTAYI ÖĞREN
-        let $point = document.getElementById(`x${snake1.location.x}y${snake1.location.y}`);
+        //let $point = document.getElementById(`x${snake1.currentLocation.x}y${snake1.currentLocation.y}`);
 
         //BİR SONRAKİ NOKTADA GEM VARSA AL!
-        if($point.style.backgroundColor === 'red'){
+        /*if($point.style.backgroundColor === 'red'){
             snake1.length++;
-        }
+        }*/
 
         //SİYAHLAT
-        $point.style.backgroundColor = 'black';
+        //$point.style.backgroundColor = 'black';
 
 
         //BOARD
-        HTML.board.location.x.innerHTML = snake1.location.x;
-        HTML.board.location.y.innerHTML = snake1.location.y;
+        /*HTML.board.location.x.innerHTML = snake1.currentLocation.x;
+        HTML.board.location.y.innerHTML = snake1.currentLocation.y;*/
 
-        //MOVE
-        if(direction === 'x'){
-            snake1.horizontalIncrease(increase);
-        } else if(direction === 'y'){
-            snake1.verticalIncrease(increase);
-        }
+        snake1.update();
 
 
     }, speed);
@@ -90,10 +85,12 @@ HTML.btn.start.addEventListener('click', e => {
             let clearGem = gemMemory.shift();
             let $clearGem = document.getElementById(`x${clearGem.x}y${clearGem.y}`);
             $clearGem.style.backgroundColor = 'white';
+            $clearGem.removeAttribute('data-value');
         }
 
         let $gemPoint = document.getElementById(`x${x}y${y}`);
         $gemPoint.style.backgroundColor = 'red';
+        $gemPoint.dataset.value = Math.floor(Math.random() * 5);;
 
     }, 5000);
     //GEM UPDATE//
@@ -109,37 +106,3 @@ HTML.btn.stop.addEventListener('click', e => {
     clearInterval(gemInterval);
 });
 //STOP//
-
-
-
-//KEY DOWN:
-document.onkeydown = function (event){
-
-    switch(event.key){
-        case "ArrowUp":
-            if(direction === 'y'){ break; }
-            direction = 'y';
-            increase = -1;
-            break;
-
-        case "ArrowDown":
-            if(direction === 'y'){ break; }
-            direction = 'y';
-            increase = 1;
-            break;
-
-        case "ArrowLeft":
-            if(direction === 'x'){ break; }
-            direction = 'x';
-            increase = -1;
-            break;
-
-        case "ArrowRight":
-            if(direction === 'x'){ break; }
-            direction = 'x';
-            increase = 1;
-            break;
-    }
-
-}
-//KEY DOWN//
