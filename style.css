@@ -1,10 +1,12 @@
 html{ height: 100%; font-family: Arial; }
 body{ height: 100%; margin: 0; display: flex; align-items: center; }
 main{ width: 500px; line-height: 10px; border: 1px solid #CCC; margin: auto; }
-main > .box{
-    display: inline-block; width:8px; height:8px; margin: 0px; border: 1px dotted #EEE;
-    line-height: 0px;
+main .arena .box{
+    display: inline-block; width:8px; height:8px; border: 1px dotted #EEE; line-height: 0px;
 }
-main > .board{
-    padding: 15px; background-color: #EEE;
-}
+main .board{ padding: 15px; background-color: #EEE; }
+main .board .button-wrapper{ float: left; }
+main .board button{ margin: 0; }
+main .board .box{ font-size: 12px; }
+main .board .box .name{ font-weight: 600; }
+main .board .box .value{ font-weight: 100; }
